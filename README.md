@@ -1,18 +1,57 @@
 # Performance package
 
-The aim of this package is to ease the assessment of the performance of machine learning models, both classification and regression tasks. All methods we used are based on scikit-learn metric modules. For classification tasks, users can assess the performance of their models with these metrics:
+The aim of this package is to ease the assessment of the performance of machine learning models, both classification and regression tasks. All methods we used are based on scikit-learn metric modules. For classification tasks, users can assess the performance of models with these metrics:
 
- -accuracy
- -precision
- -recall
- -f1_score
- -confusion matrix
- -ROC curve and AUC
- 
-To use this package you just need to import performance module to your workspace and then create an object from the `Performance` class passinng the name of machine learning model and machine learning task type. The is an example:
+- accuracy
+- precision
+- recall
+- f1 score
+- confusion matrix
+- ROC curve and AUC
+
+For regression tasks, users can assess the performance of the models with these metrics:
+
+- root of MSE
+- MAE
+- R2 score
+- scatter plot of y_pred and y_true
+
+To use this package, after installing the performance package with the pip command
 
 ```
-from ml-perfomance import Performance
-model_per = Performance(task_type = 'r', model = model)
+pip install performance
+```
+you just need to import `ClassificationMetrics` (RegressionMetrics) class from `performance.classification` module (`performance.regression`) to your workspace and then create an object from this class. The `metric_table` method is responsible for providing the necessary metrics. Take a look at the following example:
+
+```
+#classifcation task on iris dataset
+from performance.classification import ClassificationMetrics
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+#load data
+df = sns.load_dataset('iris')
+
+# Encode labels in column 'species'
+label_encoder = LabelEncoder()
+df['species']= label_encoder.fit_transform(df['species'])
+
+#Split data to train and test
+X  = df.iloc[:, :-1]
+y = df['species']
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size= .20)
+
+#train the model
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+
+#create an instance of the ClassificationMetrics class
+cm = ClassificationMetrics()
+#determine the data
+cm.get_data(X_train, X_test, y_train, y_test)
+#model evaluation
+cm.metric_table(model = lr, average = 'micro' )
 
 ```
