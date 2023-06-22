@@ -9,15 +9,19 @@ class ClassificationMetrics(ModelPerformance):
     def __init__(self):
         super().__init__()
     
-    # For now, just support binary classification
-    def metric_table(self, model, visualize = True, average= 'binary', metric: Union[str, list] = ['percision', 'recall', 'f1']):
+    def metric_table(self, model, confusion_matrix = True, average= 'binary', metric: Union[str, list] = ['percision', 'recall', 'f1']):
 
         """
         This method creates a DataFrame of the selected metrics
 
-        average (str): {'micro', 'macro', 'binary'} or None, default= 'binary'
+        model (ML estimator): Fitted ML model
 
-        metric (Union[str, list]): A list of ['percision', 'recall', 'f1'] or one of them. It always returns accuracy by default.
+        Confusion_matrix (binary): {True, False}. If True, it returns the confusion matrix of train and test data, default= True
+
+        average (str): {'micro', 'macro', 'binary'} or None, default= 'binary'. For multi-class classification it should be one of 'mirco', 'macro' or None. 
+        To see these parameters descriptions, visit sklearn.metrics.percision_score() documnetation.
+
+        metric (Union[str, list]): A list of ['percision', 'recall', 'f1'] or one of them. It always includes accuracy by default.
         """
 
         self.model = model
@@ -53,7 +57,7 @@ class ClassificationMetrics(ModelPerformance):
         performance_df = pd.DataFrame([train_performance,test_performance], columns=columns, index= ['trian','test'])
         display(performance_df)
 
-        if visualize ==True:
+        if confusion_matrix ==True:
             #confusion matrix:
             fig, ax = plt.subplots(1,2,figsize = (12,5))
 

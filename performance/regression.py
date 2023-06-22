@@ -11,6 +11,15 @@ class RegressionMetrics(ModelPerformance):
         super().__init__()
 
     def metric_table(self, model, visualize = True):
+        """
+        This method creates a DataFrame of the selected metrics
+
+        model (ML estimator): Fitted ML model
+
+        visualize (binary): {True, False}. If True, it compares the predicted values (y_pred) to the actual values (y_true).
+
+        """
+        
         self.model = model
 
         train_performance = []
