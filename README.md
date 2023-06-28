@@ -16,12 +16,12 @@ For regression tasks, users can assess the performance of the models with these 
 - R2 score
 - scatter plot of y_pred and y_true
 
-To use this package, after installing the performance package with the pip command
+This package is not available on PyPI for now. You can clone the directory and navigate to the directory and then run 
 
 ```
-pip install performance
+pip install -e .
 ```
-you just need to import `ClassificationMetrics` (RegressionMetrics) class from `performance.classification` module (`performance.regression`) to your workspace and then create an object from this class. The `metric_table` method is responsible for providing the necessary metrics. Take a look at the following example:
+This will install the package on the environment. To utilize it, you just need to import `ClassificationMetrics` (RegressionMetrics) class from `performance.classification` module (`performance.regression`) to your workspace and then create an object from this class. The `metric_table` method is responsible for providing the necessary metrics. Take a look at the following example:
 
 ```
 #classifcation task on iris dataset
