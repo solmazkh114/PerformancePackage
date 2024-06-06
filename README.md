@@ -1,6 +1,8 @@
 # Performance package
 
-This package is a practice project for learning how to create a Python package. It is not intended to be a state-of-the-art solution ( all methods we used are based on scikit-learn metric modules). The primary aim is to provide hands-on experience in packaging Python code. This package can ease the assessment of the performance of machine learning models, both classification and regression tasks. For classification tasks, users can assess the performance of models with these metrics:
+This package is a practice project for learning how to create a Python package. It is not intended to be a state-of-the-art solution ( all methods we used are based on scikit-learn metric modules). The primary aim is to provide hands-on experience in packaging Python code. Although the primary aim of this project is to provide hands-on experience in packaging Python code, this package can also facilitate the assessment of machine learning model performance for both classification and regression tasks.
+
+For classification tasks, users can assess the performance of models with these metrics:
 
 - accuracy
 - precision
