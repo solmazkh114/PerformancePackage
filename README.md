@@ -1,6 +1,6 @@
 # Performance package
 
-The aim of this package is to ease the assessment of the performance of machine learning models, both classification and regression tasks. All methods we used are based on scikit-learn metric modules. For classification tasks, users can assess the performance of models with these metrics:
+This package is a practice project for learning how to create a Python package. It is not intended to be a state-of-the-art solution ( all methods we used are based on scikit-learn metric modules). The primary aim is to provide hands-on experience in packaging Python code. This package can ease the assessment of the performance of machine learning models, both classification and regression tasks. For classification tasks, users can assess the performance of models with these metrics:
 
 - accuracy
 - precision
@@ -16,12 +16,12 @@ For regression tasks, users can assess the performance of the models with these 
 - R2 score
 - scatter plot of y_pred and y_true
 
-This package is not available on PyPI for now. You can clone the directory and navigate to the directory and then run 
+This package is not available on PyPI for now. You can clone the directory navigate to the directory and then run 
 
 ```
 pip install -e .
 ```
-This will install the package on the environment. To utilize it, you just need to import `ClassificationMetrics` (RegressionMetrics) class from `performance.classification` module (`performance.regression`) to your workspace and then create an object from this class. The `metric_table` method is responsible for providing the necessary metrics. Take a look at the following example:
+This will install the package on the environment. To utilize it, you just need to import `ClassificationMetrics` (`RegressionMetrics`) class from `performance.classification` module (`performance.regression`) to your workspace and then create an object from this class. The `metric_table` method is responsible for providing the necessary metrics. Take a look at the following example:
 
 ```
 #classifcation task on iris dataset
